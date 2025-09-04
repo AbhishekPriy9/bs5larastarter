@@ -1,0 +1,42 @@
+{
+    "name": "abhishekpriy9/bs5larastarter",
+    "description": "A Bootstrap 5 Laravel 11/12 admin panel starter package using Sneat theme.",
+    "type": "library",
+    "keywords": [
+        "laravel",
+        "admin panel",
+        "bootstrap 5",
+        "starter kit",
+        "sneat",
+        "dashboard",
+        "package"
+    ],
+    "homepage": "https://github.com/AbhishekPriy9/bs5larastarter",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Abhishek Priy",
+            "homepage": "https://github.com/AbhishekPriy9"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/AbhishekPriy9/bs5larastarter/issues",
+        "source": "https://github.com/AbhishekPriy9/bs5larastarter"
+    },
+    "require": {
+        "php": "^8.2",
+        "laravel/framework": "^11.0 || ^12.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "AbhishekPriy9\\Bs5larastarter\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "AbhishekPriy9\\Bs5larastarter\\Bs5larastarterServiceProvider"
+            ]
+        }
+    }
+}

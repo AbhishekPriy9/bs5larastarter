@@ -1,0 +1,7 @@
+<?php
+
+return [
+    'site_name' => 'Laravel',
+    'site_favicon' => 'img/logo.png',
+    'site_logo' => 'img/logo.png',
+];

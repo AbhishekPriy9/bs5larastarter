@@ -1,0 +1,109 @@
+<x-layouts.app>
+    <h5 class="fw-bold py-1 mb-4">
+        <span class="text-muted fw-light">Home /</span> Account Settings
+    </h5>
+    <div class="card mb-4">
+        <h5 class="card-header">Profile Details</h5>
+        <!-- Account -->
+        <div class="card-body">
+            <form id="formAccountSettings" method="POST" action="{{ route('admin.profile.update') }}"
+                enctype="multipart/form-data">
+                @csrf
+                @method('PATCH')
+                <div class="d-flex align-items-start align-items-sm-center gap-4">
+                    <img src="{{ $user->avatar ? asset('storage/'.$user->avatar) : asset('img/avatars/1.png') }}"
+                        alt="user-avatar" class="d-block rounded" height="100" width="100" id="uploadedAvatar" />
+                    <div class="button-wrapper">
+                        <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
+                            <span class="d-none d-sm-block">Upload new photo</span>
+                            <i class="bx bx-upload d-block d-sm-none"></i>
+                            <input type="file" id="upload" name="avatar" class="account-file-input" hidden
+                                accept=".jpeg,.png,.jpg,.svg,.webp" />
+                        </label>
+                        <p class="text-muted mb-0">Allowed JPEG,PNG,JPG,SVG,WEBP. Max size of 2MB</p>
+                    </div>
+                    @error('avatar') <span class="text-danger">{{ $message }}</span> @enderror
+                </div>
+                <hr class="my-4" />
+                <div class="row">
+                    <div class="mb-3 col-md-6">
+                        <label for="name" class="form-label">Name</label>
+                        <input class="form-control @error('name') is-invalid @enderror" type="text" id="name"
+                            name="name" value="{{ old('name', $user->name) }}" autofocus />
+                        @error('name')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <label for="email" class="form-label">E-mail</label>
+                        <input class="form-control @error('email') is-invalid @enderror" type="text" id="email"
+                            name="email" value="{{ old('email', $user->email) }}" />
+                        @error('email')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="mt-2">
+                    <button type="submit" class="btn btn-primary me-2">Save changes</button>
+                    <button type="reset" class="btn btn-label-secondary">Cancel</button>
+                </div>
+            </form>
+        </div>
+        <!-- /Account -->
+    </div>
+
+    <div class="card">
+        <h5 class="card-header">Change Password</h5>
+        <div class="card-body">
+            <form id="formAccountPassword" method="POST" action="{{ route('admin.profile.password.update') }}">
+                @csrf
+                @method('PATCH')
+                <div class="row">
+                    <div class="mb-3 col-md-12 form-password-toggle">
+                        <label class="form-label" for="current_password">Current Password</label>
+                        <div class="input-group input-group-merge">
+                            <input class="form-control @error('current_password') is-invalid @enderror" type="password"
+                                name="current_password" id="current_password" />
+                            <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                            @error('current_password')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mb-3 col-md-6 form-password-toggle">
+                        <label class="form-label" for="password">New Password</label>
+                        <div class="input-group input-group-merge">
+                            <input class="form-control @error('password') is-invalid @enderror" type="password"
+                                id="password" name="password" />
+                            <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                            @error('password')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="mb-3 col-md-6 form-password-toggle">
+                        <label class="form-label" for="password_confirmation">Confirm New Password</label>
+                        <div class="input-group input-group-merge">
+                            <input class="form-control" type="password" name="password_confirmation"
+                                id="password_confirmation" />
+                            <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-1">
+                        <p class="fw-semibold">Password Requirements:</p>
+                        <ul class="ps-3 mb-0">
+                            <li class="mb-1">Minimum 8 characters long - the more, the better</li>
+                            <li class="mb-1">At least one lowercase & one uppercase character</li>
+                            <li>At least one number, symbol, or whitespace character</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-primary me-2">Save new password</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</x-layouts.app>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome - {{ config('settings.site_name') }}</title>
+    <link rel="icon" type="image/x-icon" href="{{ config('settings.site_favicon') }}" />
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+    <style>
+        html, body { height: 100%; }
+        body { margin: 0; font-family: Figtree, sans-serif; }
+        .container { display: flex; justify-content: center; align-items: center; height: 100%; text-align: center; }
+        a { font-weight: 600; text-decoration: none; color: #6366f1; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <h1>Welcome to Your Application</h1>
+            <p>
+                <a href="/admin/login">Go to Admin Panel</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

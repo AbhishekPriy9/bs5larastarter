@@ -1,0 +1,54 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
+use App\Models\Setting;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
+class SettingController extends Controller
+{
+    public function index()
+    {
+        // Pluck settings into an associative array: ['key' => 'value']
+        $settings = Setting::pluck('value', 'key');
+        return view('admin.settings.index', compact('settings'));
+    }
+
+    public function update(Request $request)
+    {
+        $validatedData = $request->validate([
+            'site_name' => 'required|string|max:255',
+            'site_logo' => 'nullable|mimes:png,jpg,jpeg,svg,webp|max:2048',
+            'site_favicon' => 'nullable|mimes:ico,png|max:512',
+        ]);
+
+        // Loop through all the validated keys
+        foreach ($validatedData as $key => $value) {
+            // First, check if the current key is for a file upload
+            if ($request->hasFile($key)) {
+                
+                // Find the old setting to delete the old file from storage
+                $setting = Setting::where('key', $key)->first();
+                if ($setting && $setting->value) {
+                    if (Storage::disk('public')->exists($setting->value)) {
+                        Storage::disk('public')->delete($setting->value);
+                    }
+                }
+
+                // Store the  file using the recommended 'storeAs' method
+                $file = $request->file($key);
+                $fileName = $key . '.' . $file->getClientOriginalExtension();
+                $value = $file->storeAs('settings', $fileName, 'public');
+            }
+
+            Setting::updateOrCreate(
+                ['key' => $key], 
+                ['value' => $value]
+            );
+        }
+
+        return back()->with('success', 'Settings updated successfully.');
+    }
+}

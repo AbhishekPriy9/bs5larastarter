@@ -1,0 +1,10 @@
+<x-layouts.app>
+    <h5 class="fw-bold py-1 mb-4">
+        <span class="text-muted fw-light">Home /</span> Dashboard
+    </h5>
+    <div class="card">
+        <div class="card-body">
+            Welcome to the Admin Dashboard!
+        </div>
+    </div>
+</x-layouts.app>

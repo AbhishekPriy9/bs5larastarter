@@ -1,0 +1,20 @@
+/* stubs/resources/js/app.js.stub */
+
+// Import Core Vendors
+// The order is important: jQuery -> Popper -> Bootstrap
+import '../assets/vendor/libs/jquery/jquery.js';
+import '../assets/vendor/libs/popper/popper.js';
+import '../assets/vendor/js/bootstrap.js';
+import '../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js';
+
+// Import Theme Main Scripts
+import '../assets/vendor/js/helpers.js';
+import '../assets/js/config.js';
+import '../assets/vendor/js/menu.js';
+import '../assets/js/main.js';
+
+// Import Your Custom Scripts
+import './custom-toast.js';
+
+// Any other page-specific JS or initializations can go here
+console.log('Bs5-Larastarter assets loaded!');

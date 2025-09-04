@@ -1,0 +1,38 @@
+<x-layouts.app>
+    <h5 class="fw-bold py-1 mb-4">
+        <span class="text-muted fw-light">Home /</span> Settings
+    </h5>
+    <div class="card mb-4">
+        <h5 class="card-header">Site Settings</h5>
+        <div class="card-body">
+            <form action="{{ route('admin.settings.update') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="row">
+                    <div class="mb-3 col-md-6">
+                        <label for="site_name" class="form-label">Site Name</label>
+                        <input class="form-control" type="text" id="site_name" name="site_name" value="{{ config('settings.site_name') }}" autofocus />
+                        @error('site_name') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <label for="site_logo" class="form-label">Site Logo 
+                            <a href="{{ config('settings.site_logo') }}" target="_blank">View</a>
+                        </label>
+                        <input class="form-control" type="file" id="site_logo" name="site_logo" accept="image/*">
+                        @error('site_logo') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <label for="site_favicon" class="form-label">Site Favicon 
+                            <a href="{{ config('settings.site_favicon') }}" target="_blank">View</a>
+                        </label>
+                        <input class="form-control" type="file" id="site_favicon" name="site_favicon" accept=".ico, .png">
+                        @error('site_favicon') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+                </div>
+                <div class="mt-2">
+                    <button type="submit" class="btn btn-primary me-2">Save changes</button>
+                    <button type="reset" class="btn btn-label-secondary">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</x-layouts.app>

@@ -1,0 +1,17 @@
+/* stubs/resources/css/app.css.stub */
+
+/* Fonts */
+@import '../assets/vendor/fonts/iconify-icons.css';
+
+/* Core CSS */
+@import '../assets/vendor/css/core.css';
+@import '../assets/vendor/css/theme-default.css';
+@import '../assets/css/demo.css';
+
+/* Vendor CSS */
+@import '../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css';
+
+/* Page-specific CSS (included for simplicity, affects login page) */
+@import '../assets/vendor/css/pages/page-auth.css';
+
+/* Custom CSS for your starter kit can be added below this line */

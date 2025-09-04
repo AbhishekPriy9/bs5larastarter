@@ -1,0 +1,30 @@
+<?php
+
+namespace App\Providers;
+
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\ServiceProvider;
+use App\Models\Setting;
+
+class SettingsServiceProvider extends ServiceProvider
+{
+    /**
+     * Bootstrap services.
+     */
+    public function boot(): void
+    {
+        // Ensure the settings table exists before querying it
+        if (Schema::hasTable('settings')) {
+            // Load all settings from the database
+            $settings = Setting::all()->pluck('value', 'key')->all();
+            foreach (['site_logo', 'site_favicon'] as $key) {
+                $settings[$key] = str_contains($settings[$key], 'img/logo.png')
+                    ? asset($settings[$key])
+                    : asset('storage/' . $settings[$key]);
+            }
+
+            Config::set('settings', $settings);
+        }
+    }
+}

@@ -1,0 +1,59 @@
+<nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
+    <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+        <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+            <i class="bx bx-menu fs-3"></i>
+        </a>
+    </div>
+    <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+        <ul class="navbar-nav flex-row align-items-center ms-auto">
+            <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                <a class="nav-link dropdown-toggle hide-arrow p-0" href="javascript:void(0);" data-bs-toggle="dropdown">
+                    <div class="avatar avatar-online">
+                        <img src="{{ auth()->user()->avatar ? asset('storage/'.auth()->user()->avatar) : asset('img/avatars/1.png') }}" alt="User Avatar" style="width:40px; height:40px; object-fit:cover;" class="rounded-circle" />
+                    </div>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li>
+                        <a class="dropdown-item" href="javascript:void(0);">
+                            <div class="d-flex">
+                                <div class="flex-shrink-0 me-3">
+                                    <div class="avatar avatar-online">
+                                        <img src="{{ auth()->user()->avatar ? asset('storage/'.auth()->user()->avatar) : asset('img/avatars/1.png') }}" alt="User Avatar" style="width:40px; height:40px; object-fit:cover;" class="rounded-circle" />
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <span class="fw-semibold d-block">{{ auth()->user()->name }}</span>
+                                    <small class="text-muted">
+                                    {{ ucfirst(auth()->user()->role) }}
+                                    </small>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="{{ route('admin.profile.edit') }}">
+                            <i class="bx bx-md bx-user me-2"></i>
+                            <span>My Profile</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="{{ route('admin.settings.index') }}">
+                            <i class="bx bx-md bx-cog me-2"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                    <li><div class="dropdown-divider"></div></li>
+                    <li>
+                        <form method="POST" action="{{ route('admin.logout') }}">
+                            @csrf
+                            <a class="dropdown-item" href="{{ route('admin.logout') }}" onclick="event.preventDefault(); if(confirm('Are you sure you want to log out?')) { this.closest('form').submit(); }">
+                                <i class="bx bx-md bx-power-off me-2"></i>
+                                <span>Log Out</span>
+                            </a>
+                        </form>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
