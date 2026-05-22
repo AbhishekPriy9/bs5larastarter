@@ -1,11 +1,11 @@
 # Bs5-Larastarter
 
-A simple, modern admin panel starter kit for Laravel 11+ and 12+, built with [Bootstrap 5](https://getbootstrap.com/) and powered by the [Sneat Bootstrap 5 Admin Template](https://themeselection.com/products/sneat-bootstrap-html-admin-template/). This package provides a ready-to-use admin panel with authentication, user profile management, settings, and more.
+A simple, modern admin panel starter kit for Laravel 11, 12, and 13, built with [Bootstrap 5](https://getbootstrap.com/) and powered by the [Sneat Bootstrap 5 Admin Template](https://themeselection.com/products/sneat-bootstrap-html-admin-template/). This package provides a ready-to-use admin panel with authentication, user profile management, settings, and more.
 
 ## Minimum Requirements
 
-- PHP >= 8.2
-- Laravel 11 or 12
+- PHP >= 8.2 (PHP >= 8.3 required for Laravel 13)
+- Laravel 11, 12, or 13
 - Node.js >= 18.x
 - Composer
 - NPM
@@ -19,7 +19,7 @@ A simple, modern admin panel starter kit for Laravel 11+ and 12+, built with [Bo
 
 ## Features
 
-- Laravel 11/12 support
+- Laravel 11/12/13 support
 - Bootstrap 5 (Sneat theme) UI
 - Admin authentication (login/logout)
 - Role-based access (admin only)
